@@ -6,9 +6,13 @@ const apiUrl = "/choreo-apis/djangoreacttutorial/backend/v1"
 console.log("VITE_API_URL:", import.meta.env.VITE_API_URL); // Log VITE_API_URL value
 console.log("apiUrl:", apiUrl); // Log default apiUrl value
 
+const baseURL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl;
+console.log("baseURL:", baseURL); // Log the final baseURL value
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,
+    baseURL: baseURL,
 })
+
 
 api.interceptors.request.use(
     (config) => {
